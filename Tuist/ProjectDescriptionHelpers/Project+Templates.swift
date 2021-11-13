@@ -26,8 +26,8 @@ extension Target {
                    product: .app,
                    bundleId: "io.tuist.\(name)",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Sources/**/*.swift"],
-                resources: ["Projects/\(name)/Resources/**/*"],
+                sources: ["Projects/\(name)/Sources/*"],
+                resources: ["Projects/\(name)/Resources/*"],
                 dependencies: targetDependencies,
                 settings: Settings.settings(configurations: appConfigurations)),
             Target(name: "\(name)Tests",
@@ -35,7 +35,7 @@ extension Target {
                 product: .unitTests,
                 bundleId: "io.tuist.\(name)Tests",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Tests/**/*.swift"],
+                sources: ["Projects/\(name)/Tests/*"],
                 dependencies: [
                     .target(name: name),
                     .xctest,
@@ -46,7 +46,7 @@ extension Target {
                 product: .unitTests,
                 bundleId: "io.tuist.\(name)UITests",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/UITests/**/*.swift"],
+                sources: ["Projects/\(name)/UITests/*"],
                 dependencies: [
                     .target(name: name),
                     .xctest,
@@ -97,7 +97,7 @@ extension Target {
                                          product: .framework,
                                          bundleId: "io.tuist.\(name)",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Sources/**/*.swift"],
+                sources: ["Projects/\(name)/Sources/*"],
                 dependencies: targetDependencies,
                 settings: Settings.settings(configurations: frameworkConfigurations)))
         }
@@ -107,7 +107,7 @@ extension Target {
                 product: .framework,
                 bundleId: "io.tuist.\(name)Testing",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Testing/**/*.swift"],
+                sources: ["Projects/\(name)/Testing/*"],
                 dependencies: [.target(name: "\(name)"), .xctest],
                 settings: Settings.settings(configurations: frameworkConfigurations)))
         }
@@ -117,7 +117,7 @@ extension Target {
                 product: .unitTests,
                 bundleId: "io.tuist.\(name)Tests",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Tests/**/*.swift"],
+                sources: ["Projects/\(name)/Tests/*"],
                 dependencies: targetTestDependencies,
                 settings: Settings.settings(configurations: testsConfigurations)))
         }
@@ -127,8 +127,8 @@ extension Target {
                 product: .app,
                 bundleId: "io.tuist.\(name)Examples",
                 infoPlist: .default,
-                sources: ["Projects/\(name)/Examples/Sources/**/*.swift"],
-                resources: ["Projects/\(name)/Examples/Resources/**"],
+                sources: ["Projects/\(name)/Examples/Sources/*"],
+                resources: ["Projects/\(name)/Examples/Resources/*"],
                 dependencies: [.target(name: "\(name)")],
                 settings: Settings.settings(configurations: appConfigurations)))
         }
