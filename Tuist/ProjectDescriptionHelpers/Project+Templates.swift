@@ -56,6 +56,7 @@ extension Target {
     }
     
     public static func makeFrameworkTargets(name: String,
+                                            external: [String] = [],
                                             dependencies: [String] = [],
                                             testDependencies: [String] = [],
                                             targets: Set<uFeatureTarget> = Set([.framework, .tests, .examples, .testing]),
@@ -85,6 +86,7 @@ extension Target {
         // Target dependencies
         var targetDependencies: [TargetDependency] = dependencies.map { .target(name: $0) }
         targetDependencies.append(contentsOf: sdks.map { .sdk(name: $0) })
+        targetDependencies.append(contentsOf: external.map { .external(name: $0) })
         if dependsOnXCTest {
             targetDependencies.append(.xctest)
         }

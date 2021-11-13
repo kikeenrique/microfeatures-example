@@ -9,7 +9,7 @@ let configurations: [ProjectDescription.Configuration] = [
 func targets() -> [Target] {
     var targets: [Target] = []
     targets += Target.makeAppTargets(name: "App", dependencies: ["uSearch", "uHome"], testDependencies: ["uTesting"])
-    targets += Target.makeFrameworkTargets(name: "uTesting", targets: Set([.framework]), dependsOnXCTest: true)
+    targets += Target.makeFrameworkTargets(name: "uTesting", external: ["OHHTTPStubsSwift", "OHHTTPStubsSwift"], targets: Set([.framework]), dependsOnXCTest: true)
     targets += Target.makeFrameworkTargets(name: "uCore")
     targets += Target.makeFrameworkTargets(name: "uUI")
     targets += Target.makeFrameworkTargets(name: "uFeatures", dependencies: ["uCore", "uUI"], targets: Set([.framework, .tests, .testing]))
